@@ -12,6 +12,7 @@ import scipy as sp
 from math import pi, sqrt, exp, cos, sin
 from numpy.polynomial import chebyshev as Tsch
 from scipy.integrate import quad
+from scipy.stats import linregress
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from sympy.utilities import lambdify
@@ -68,12 +69,12 @@ def Decompose(func, N):
 
 def Plot(x, func, title, log):
 
-    ax, fig = plt.subplots()
+    fig, ax = plt.subplots()
     plt.xlim(-1,1)
     plt.ylim(-0.5, 1.5)
     plt.title('%s function and spectral interpolants' %title)
 
-    N_order = np.array([4, 8, 16, 32])
+    N_order = np.array([4, 8, 10, 12, 16, 32, 50, 64, 128, 200, 250])
     error = np.empty(len(N_order))
     func = np.frompyfunc(func, 1, 1)
     
@@ -88,7 +89,7 @@ def Plot(x, func, title, log):
         yN = Tsch.chebval(x, coeff)
 
         err = w_i * np.power(np.subtract(y,yN), 2)
-        err = np.sum(err)
+        err = sqrt(np.sum(err))
         error[idx] = err
         
         plt.plot(x, yN, '--', label='N=%s' % str(N))
@@ -104,11 +105,25 @@ def Plot(x, func, title, log):
     
     if log == True:
         plt.loglog(N_order, error)
+        plt.loglog(N_order, error, 'ro', markersize=4)
+        log_error = np.log(error) 
+        log_N = np.log(N_order)
+        m = linregress(log_N, log_error)[0]
+        plt.figtext( 0.6, 0.7 ,'slope = %.2f' %m)
 
     else:
         plt.semilogy(N_order, error)
     
     plt.savefig('%s_error' %title)
+
+    coeff = Decompose(func, np.amax(N_order))
+    coeff_idx = np.arange(len(coeff))
+    plt.clf()
+    plt.ylabel('Coefficient')
+    plt.xlabel('N')
+    plt.title('%s Chebyshev coefficients' %title)
+    plt.plot(coeff_idx, coeff)
+    plt.savefig('%s_coeff' %title)
 
 
 #############################################
