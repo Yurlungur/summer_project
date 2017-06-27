@@ -66,7 +66,7 @@ def Decompose(func, N):
 
 #############################################
 
-def Plot(x, func, title):
+def Plot(x, func, title, log):
 
     ax, fig = plt.subplots()
     plt.xlim(-1,1)
@@ -101,7 +101,13 @@ def Plot(x, func, title):
     plt.title('%s function error behaviour' %title)
     plt.xlabel('N')
     plt.ylabel('Error')
-    plt.semilogy(N_order, error)
+    
+    if log == True:
+        plt.loglog(N_order, error)
+
+    else:
+        plt.semilogy(N_order, error)
+    
     plt.savefig('%s_error' %title)
 
 
@@ -119,6 +125,6 @@ if __name__ == "__main__":
     x = np.arange(-1, 1, 0.01)
     
     ConfigurePlots()
-    Plot(x, chi, str('Top_hat'))
-    Plot(x, g, str('Gaussian'))
+    Plot(x, chi, str('Top_hat'), True)
+    Plot(x, g, str('Gaussian'), False)
     
