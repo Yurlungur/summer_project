@@ -43,16 +43,19 @@ def ConfigurePlots():
 def Decompose(func, N):
 
     coll_pts = lambda i: cos((2*i+1)*pi/(2*N+2))
-    x_i = map(coll_pts, np.arange(N+1)) 
+    coll_pts = np.frompyfunc(coll_pts, 1, 1)
+    x_i = coll_pts(np.arange(N+1))
     w_i = pi/(N+1)
+    func = np.frompyfunc(func, 1, 1)
 
     u_n = np.zeros(N+1)
     
     for n in range(N+1):
 
         T_n = Tsch.Chebyshev.basis(n)
-        p_i = map(T_n, x_i)
-        u_i = map(func, x_i)
+        T_n = np.frompyfunc(T_n, 1, 1)
+        p_i = T_n(x_i)
+        u_i = func(x_i)
         gamma_n = np.multiply(np.power(p_i, 2), w_i)
         gamma_n = np.sum(gamma_n)
         u_tylda = np.multiply(u_i, p_i)
