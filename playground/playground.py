@@ -30,9 +30,8 @@ def ConfigurePlots():
     rcParams['font.size'] = 12
     rcParams['axes.grid'] = 'True'
     rcParams['axes.titlesize'] = 15
-    rcParams['axes.labelsize'] = 10
+    rcParams['axes.labelsize'] = 20
     rcParams['axes.ymargin'] = 0.5
-    rcParams['figure.titlesize'] = 30
     rcParams['figure.figsize'] = 7, 7
     rcParams['legend.fontsize'] = 'small'
     rcParams['savefig.format'] = 'pdf'
@@ -75,21 +74,36 @@ def Plot(x, func, title):
     plt.title('%s function and spectral interpolants' %title)
 
     N_order = np.array([4, 8, 16, 32])
+    error = np.empty(len(N_order))
     func = np.frompyfunc(func, 1, 1)
     
     y = func(x)
     
     plt.plot(x, y, '-k', label='Function')
     
-    for N in N_order:
-
+    for idx, N in enumerate(N_order):
+        
+        w_i = pi/(N+1)
         coeff = Decompose(func, N)
         yN = Tsch.chebval(x, coeff)
+
+        err = w_i * np.power(np.subtract(y,yN), 2)
+        err = np.sum(err)
+        error[idx] = err
+        
         plt.plot(x, yN, '--', label='N=%s' % str(N))
 
     plt.legend()
 
-    plt.savefig('%s' %title)
+    plt.savefig('%s_function' %title)
+
+    plt.clf()
+    plt.title('%s function error behaviour' %title)
+    plt.xlabel('N')
+    plt.ylabel('Error')
+    plt.semilogy(N_order, error)
+    plt.savefig('%s_error' %title)
+
 
 #############################################
 
