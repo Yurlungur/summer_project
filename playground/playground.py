@@ -53,7 +53,6 @@ def Decompose(func, N):
     for n in range(N+1):
 
         T_n = Tsch.Chebyshev.basis(n)
-        T_n = np.frompyfunc(T_n, 1, 1)
         p_i = T_n(x_i)
         u_i = func(x_i)
         gamma_n = np.multiply(np.power(p_i, 2), w_i)
@@ -76,7 +75,10 @@ def Plot(x, func, title):
     plt.title('%s function and spectral interpolants' %title)
 
     N_order = np.array([4, 8, 16, 32])
-    y = map(func, x)
+    func = np.frompyfunc(func, 1, 1)
+    
+    y = func(x)
+    
     plt.plot(x, y, '-k', label='Function')
     
     for N in N_order:
