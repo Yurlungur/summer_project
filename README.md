@@ -8,4 +8,8 @@ Trying out html:
 <img src="/playground/Gaussian_error.png" alt='Text tryout' width='500' align='middle'/>
 <img src="/playground/Top_hat_error.png" alt='Text tryout' width='500' align='middle'/>
 
-
+<div>
+ <img src="/playground/Gaussian_error.png" alt=""  /> 
+ <img src="/playground/Top_hat_error.png" alt=""  />
+ <img src="/playground/Gaussian_function" alt="" />
+</div>
