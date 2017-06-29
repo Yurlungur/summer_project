@@ -5,6 +5,6 @@ Collection of fragments of code and relevant image descriptions.
 
 Trying out html:
 
-<img src="/playground/Gaussian_error.png" alt='Text tryout' width='150' align='center'/>
+<img src="/playground/Gaussian_error.png" alt='Text tryout' width='500' align='middle'/>
 
 
