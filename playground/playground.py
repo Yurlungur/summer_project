@@ -1,6 +1,6 @@
 ### playground.py
-### Introductory program for spectral decomposition of
-### a Gauusian (g) and a top-hat (chi) function in the Chebyshev basis (T_i)
+### Introductory program for spectral decomposition of a Gaussian (g)
+### and a top-hat (chi) function in the Chebyshev basis (T_i)
 ### comparing the error and coefficient behaviour with increasing
 ### number of basis functions (N) 
 ### written by Joanna Piotrowska
