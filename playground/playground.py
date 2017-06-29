@@ -37,7 +37,7 @@ def ConfigurePlots():
     rcParams['axes.ymargin'] = 0.5
     rcParams['figure.figsize'] = 7, 7
     rcParams['legend.fontsize'] = 'small'
-    rcParams['savefig.format'] = 'svg'
+    rcParams['savefig.format'] = 'png'
 
 
 #############################################
@@ -184,10 +184,10 @@ if __name__ == "__main__":
     g = lambda x: exp(-(x-mu)**2/(2.0*(sigma**2))) 
 
     x = np.arange(-0.99, 0.99, 0.01) 
-    N_order = np.array([4, 8, 16, 32, 64])
+    N_order = np.array([4, 8, 16, 32])
 
     ConfigurePlots()
-    #Plot(x, chi, N_order, str('Top_hat'), True)
+    Plot(x, chi, N_order, str('Top_hat'), True)
     Plot(x, g, N_order, str('Gaussian'), False)
     
     total_time = time.time() - start_time
