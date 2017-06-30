@@ -64,14 +64,14 @@ s=4, 6, 8 values in the 'eyeballing' comparison seem to represent the waveform w
 <img src="/filtering/32/Gaussian_filter_s4_N32.png" alt='' width='400' align='middle'/><img src="/filtering/32/Gaussian_filter_s6_N32.png" alt='' width='400' align='middle'/>
 <img src="/filtering/64/Gaussian_filter_s4_N64.png" alt='' width='400' align='middle'/><img src="/filtering/64/Gaussian_filter_s6_N64.png" alt='' width='400' align='middle'/>
 
-For the Gaussian s=8 filter converges onto original function for N=32, while for N=64 already at s=6.
+General comment under coefficients.
 
 <b><i>Influence of s value on coefficient amplitude</i></b>
 
 
 <b>TOP HAT:</b>
 
-<img src="/filtering/32/Top_hat_filter_coeff_s4_N32.png" alt='' width='400' align='middle'/><img src="/filtering/32/Top_hat_filter_s6_coeff_N32.png" alt='' width='400' align='middle'/>
+<img src="/filtering/32/Top_hat_filter_coeff_s4_N32.png" alt='' width='400' align='middle'/><img src="/filtering/32/Top_hat_filter_coeff_s6_N32.png" alt='' width='400' align='middle'/>
 <img src="/filtering/64/Top_hat_filter_coeff_s4_N64.png" alt='' width='400' align='middle'/><img src="/filtering/64/Top_hat_filter_coeff_s6_N64.png" alt='' width='400' align='middle'/>
 
 For N=32 s=4 significantly influences coefficients with N>20, while for s=8 same applies for N>26. s=6 influence is between those.
@@ -82,7 +82,7 @@ For N=64 s=4 significantly influences coefficients with N>~36, while for s=8 sam
 <img src="/filtering/32/Gaussian_filter_coeff_s4_N32.png" alt='' width='400' align='middle'/><img src="/filtering/32/Gaussian_filter_coeff_s6_N32.png" alt='' width='400' align='middle'/>
 <img src="/filtering/64/Gaussian_filter_coeff_s4_N64.png" alt='' width='400' align='middle'/><img src="/filtering/64/Gaussian_filter_coeff_s6_N64.png" alt='' width='400' align='middle'/>
 
-
+I don't know what to make of the Gaussian. I don't think filtering influences the result at all. Especially for N=32 and 64.
 
 
 
