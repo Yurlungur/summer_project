@@ -82,7 +82,7 @@ For N=64 s=4 significantly influences coefficients with N>~36, while for s=8 sam
 <img src="/filtering/32/Gaussian_filter_coeff_s4_N32.png" alt='' width='400' align='middle'/><img src="/filtering/32/Gaussian_filter_coeff_s6_N32.png" alt='' width='400' align='middle'/>
 <img src="/filtering/64/Gaussian_filter_coeff_s4_N64.png" alt='' width='400' align='middle'/><img src="/filtering/64/Gaussian_filter_coeff_s6_N64.png" alt='' width='400' align='middle'/>
 
-I don't know what to make of the Gaussian. I don't think filtering influences the result at all. Especially for N=32 and 64.
+I don't know what to make of the Gaussian. I don't think filtering influences the result a lot (with the exception of extreme smoothing like s=2 or s=4)
 
 
 
