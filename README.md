@@ -3,7 +3,7 @@ Collection of fragments of code and relevant image descriptions.
 
 # Initial spectral decomposition
 
-<b>Folder: playground
+<b>Folder: playground //
 Code: playground.py</b>
 
 First step in developing the pseudospectral tool was projecting a smooth function (Gaussian) and a discontinuous one (Top Hat) onto the Chebyshev basis. playground.py performs this operation using both Gaussian quadrature and direct integration. The program outputs:
@@ -35,7 +35,7 @@ The difference between reconstruction for truncated sum approximation and integr
 
 # Exponential filtering
 
-<b>Folder: filtering
+<b>Folder: filtering //
 Code: filter.py</b>
 
 The next step was introducing an exponential filter, which reduces the significance of higher order Chebyshev polynomials in the expansion. Filter was applied by multiplying every ith coefficient by a factor sigma(i/N) where N is the highest order of polynomials used in given expansion. The chosen sigma was sigma=exp(-c(eta^s)) where eta=(i/N) and c, s are free parameters.
@@ -50,16 +50,16 @@ The shape of sigma filter is presented on the left, with general slope steepenin
 
 <b><i>Influence of s value on reconstructed waveform</i></b>
 
-Folders: filtering/64 and filtering/32
+<b>Folders: filtering/64 and filtering/32</b>
 
-TOP HAT:
+<b>TOP HAT:</b>
 
 <img src="/filtering/32/Top_hat_filter_s4_N32.png" alt='' width='400' align='middle'/><img src="/filtering/32/Top_hat_filter_s6_N32.png" alt='' width='400' align='middle'/>
 <img src="/filtering/64/Top_hat_filter_s4_N64.png" alt='' width='400' align='middle'/><img src="/filtering/64/Top_hat_filter_s6_N64.png" alt='' width='400' align='middle'/>
 
 s=4, 6, 8 values in the 'eyeballing' comparison seem to represent the waveform well enough without over-smoothing both for N=32 and N=64
 
-GAUSSIAN:
+<b>GAUSSIAN:</b>
 
 <img src="/filtering/32/Gaussian_filter_s4_N32.png" alt='' width='400' align='middle'/><img src="/filtering/32/Gaussian_filter_s6_N32.png" alt='' width='400' align='middle'/>
 <img src="/filtering/64/Gaussian_filter_s4_N64.png" alt='' width='400' align='middle'/><img src="/filtering/64/Gaussian_filter_s6_N64.png" alt='' width='400' align='middle'/>
