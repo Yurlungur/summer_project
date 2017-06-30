@@ -160,13 +160,16 @@ def Plot(x, func, N_order, title, regress):
     plt.xlabel('N')
     plt.ylabel('Error')
     plt.grid(True, which='both')
-    plt.loglog(N_order, error)
 
     if regress == True:
+        plt.loglog(N_order, error)
         log_error = np.log(error) 
         log_N = np.log(N_order)
         m = linregress(log_N, log_error)[0]
         plt.figtext( 0.6, 0.7 ,'slope = %.2f' %m)
+
+    else:
+        plt.semilogy(N_order, error)
 
     plt.savefig('%s_error' %title)
     plt.close()
