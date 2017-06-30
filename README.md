@@ -3,7 +3,7 @@ Collection of fragments of code and relevant image descriptions.
 
 # Initial spectral decomposition
 
-<b>Folder: playground //
+<b>Folder: playground <br>
 Code: playground.py</b>
 
 First step in developing the pseudospectral tool was projecting a smooth function (Gaussian) and a discontinuous one (Top Hat) onto the Chebyshev basis. playground.py performs this operation using both Gaussian quadrature and direct integration. The program outputs:
@@ -35,7 +35,7 @@ The difference between reconstruction for truncated sum approximation and integr
 
 # Exponential filtering
 
-<b>Folder: filtering //
+<b>Folder: filtering <br>
 Code: filter.py</b>
 
 The next step was introducing an exponential filter, which reduces the significance of higher order Chebyshev polynomials in the expansion. Filter was applied by multiplying every ith coefficient by a factor sigma(i/N) where N is the highest order of polynomials used in given expansion. The chosen sigma was sigma=exp(-c(eta^s)) where eta=(i/N) and c, s are free parameters.
@@ -66,7 +66,21 @@ s=4, 6, 8 values in the 'eyeballing' comparison seem to represent the waveform w
 
 For the Gaussian s=8 filter converges onto original function for N=32, while for N=64 already at s=6.
 
-<b><i></i></b>
+<b><i>Influence of s value on coefficient amplitude</i></b>
+
+
+<b>TOP HAT:</b>
+
+<img src="/filtering/32/Top_hat_filter_coeff_s4_N32.png" alt='' width='400' align='middle'/><img src="/filtering/32/Top_hat_filter_s6_coeff_N32.png" alt='' width='400' align='middle'/>
+<img src="/filtering/64/Top_hat_filter_coeff_s4_N64.png" alt='' width='400' align='middle'/><img src="/filtering/64/Top_hat_filter_coeff_s6_N64.png" alt='' width='400' align='middle'/>
+
+For N=32 s=4 significantly influences coefficients with N>20, while for s=8 same applies for N>26. s=6 influence is between those.
+For N=64 s=4 significantly influences coefficients with N>~36, while for s=8 same applies for N>50. s=6 influence is, again, between those
+
+<b>GAUSSIAN:</b>
+
+<img src="/filtering/32/Gaussian_filter_coeff_s4_N32.png" alt='' width='400' align='middle'/><img src="/filtering/32/Gaussian_filter_coeff_s6_N32.png" alt='' width='400' align='middle'/>
+<img src="/filtering/64/Gaussian_filter_coeff_s4_N64.png" alt='' width='400' align='middle'/><img src="/filtering/64/Gaussian_filter_coeff_s6_N64.png" alt='' width='400' align='middle'/>
 
 
 
