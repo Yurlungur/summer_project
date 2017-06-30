@@ -3,7 +3,7 @@ Collection of fragments of code and relevant image descriptions.
 
 # Initial spectral decomposition
 
-First step in developing the pseudospectral tool is projecting a smooth function (Gaussian) and a discontinuous one (Top Hat) onto the Chebyshev basis. playground.py performs this operation using both Gaussian quadrature and direct integration. The program outputs:
+First step in developing the pseudospectral tool was projecting a smooth function (Gaussian) and a discontinuous one (Top Hat) onto the Chebyshev basis. playground.py performs this operation using both Gaussian quadrature and direct integration. The program outputs:
 - function reconstruction both using integrals and Gaussian quadrature
 - error vs number of modes for Gaussian quadrature
 
@@ -28,7 +28,18 @@ As expected, the error decreases exponentially for the Gaussian, while it decrea
 <img src="/playground/Gaussian_gauss_vs_intgr_N8.png" alt='' width='400' align='middle'/><img src="/playground/Gaussian_gauss_vs_intgr_N16.png" alt='' width='400' align='middle'/>
 <img src="/playground/Top_hat_gauss_vs_intgr_N8.png" alt='' width='400' align='middle'/><img src="/playground/Top_hat_gauss_vs_intgr_N16.png" alt='' width='400' align='middle'/>
 
-The difference between reconstruction for truncated sum approximation and integral calculation is visible, especially for low expansion orders. For a Gaussian both results quickly converge to original function, while for the Top Hat they remain offset, even for N=64 (largest N tried out).
+The difference between reconstruction for truncated sum approximation and integral calculation is visible, especially for low expansion orders. For a Gaussian both results quickly converge to original function, while for the Top Hat they remain offset (and do not converge), even for N=64 (largest N tried out).
 
- 
+# Exponential filtering
+
+The next step was introducing an exponential filter, which reduces the significance of higher order Chebyshev polynomials in the expansion. Filter was applied by multiplying every ith coefficient by a factor sigma(i/N) where N is the highest order of polynomials used in given expansion. The chosen sigma was sigma=exp(-c(eta^s)) where eta=(i/N) and c, s are free parameters.
+c=36 was chosen, such that sigma(eta=1) = 10e-15 (i.e machine precision) and s was varied when experimenting with filtering.
+
+<i>Sigma and error</i>
+
+   
+<img src="/filtering/sigma.png" alt='' width='275' align='middle'/><img src="/filtering/Gaussian_error_vs_s.png" alt='' width='275' align='middle'/><img src="/filtering/Top_hat_error_vs_s.png" alt='' width='275' align='middle'/>
+
+The shape of sigma filter is presented on the left, with general slope steepening with increasing s, as well as an overall shift of 'turnover point' towards higher N with increasing s. The Gaussian error drops to 0 with increasing s, while it reaches a constant non-zero value for the Top Hat, which is a confirmation of earlier results, which show that for N=32 the Gaussian error is already close to 0, while it is not the case for the Top Hat.
+
 
