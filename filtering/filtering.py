@@ -15,7 +15,7 @@ from numpy.polynomial import chebyshev as T
 from scipy.integrate import quad
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
-from spectral_tools import VMatrix, Decompose, FilterCoeff
+from spectral_tools2 import VMatrix, Decompose, FilterCoeff
 
 #############################################
 
@@ -112,7 +112,9 @@ def Plot(func, x, title, s, N, Vmatrix, rec):
         af_n = absolute(af_n)
         af_n2 = absolute(af_n2)
 
-        a_n = np.ma.masked_less(a_n, 10e-13) 
+        isodd = np.mod(a_n_idx, 2)
+
+        a_n = np.ma.masked_where(isodd==1 , a_n) 
         af_n = np.ma.masked_array(af_n, a_n.mask) 
         af_n2 = np.ma.masked_array(af_n2, a_n.mask) 
         a_n_idx = np.ma.masked_array(a_n_idx, a_n.mask)
@@ -143,7 +145,7 @@ if __name__ == "__main__":
     chi = lambda x: 1.0 if (x>=-0.5 and x<=0.5) else 0
     g = lambda x: exp(-(x-mu)**2/(2.0*(sigma_g**2))) 
     
-    rec = True
+    rec = False
     x = np.arange(-1, 1, 0.01)
     N_val = np.array([32, 64])
     s_val = np.array([2, 4, 6, 8, 10])

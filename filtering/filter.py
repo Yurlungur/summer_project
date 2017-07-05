@@ -211,7 +211,7 @@ def Plot(func, x, title, s, N, rec):
         plt.semilogy(coeff_idx, absolute(coeff), '--r', label='s=%d filter' %s) 
         plt.semilogy(coeff_idx, absolute(coeff3), '--g', label='s=8 filter')
 
-        plt.legend()
+        plt.legend(loc='lower left')
         plt.savefig('%s_filter_coeff_s%d_N%d' %(title, s, N))
 
     print('N=%d s=%d spectral decomposition plotted' %(N, s))
@@ -234,8 +234,8 @@ if __name__ == "__main__":
     
     rec = False
     x = np.arange(-1, 1, 0.01)
-    N_val = np.array([32, 64])
-    s_val = np.array([2, 4, 6, 8, 10])
+    N_val = np.array([32, 64], dtype='int')
+    s_val = np.array([2, 4, 6, 8, 10], dtype='int')
 
     for N in N_val:
         

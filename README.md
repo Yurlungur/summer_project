@@ -100,6 +100,10 @@ and acts on the u<sub>j</sub> i.e. u(x<sub>j</sub>) with x<sub>j</sub> being the
 
 M<sub>ij</sub>u<sub>j</sub> = a<sub>i</sub><br><br>
 
+The w<sub>j</sub> are found using the following relationship: <br><br>
+
+&int;T<sub>j</sub>(x)w(x)dx = &Sigma;<sub>j</sub>T<sub>j</sub>(x<sub>i</sub>)w<sub>j</sub>
+
 The results seem consistent with the for-loop calculations for N=32 and N=64 in the top-hat case which can be seen in the magnitude of the coefficients presented below. Left column: For-loop, Right column: Vandermonde matrix <br>
 
 <img src="/filtering/32/Top_hat_filter_coeff_s4_N32.png" alt='' width='400' align='middle'/><img src="/filtering/using_vandermonde/32/Top_hat_filter_coeff_s4_N32.png" alt='' width='400' align='middle'/>
@@ -112,6 +116,14 @@ However, it seems not to be the case for N=64 spectral decomposition of Gaussian
 <img src="/filtering/64/Gaussian_filter_coeff_s4_N64.png" alt='' width='400' align='middle'/><img src="/filtering/using_vandermonde/64/Gaussian_filter_coeff_s4_N64.png" alt='' width='400' align='middle'/>
 <br>
 
+When computing the integrals like &int;T<sub>j</sub>(x)w(x)dx or &int;T<sub>j</sub>(x)<sup>2</sup>w(x)dx quad integration with scipy reaches difficulties at 2 particular numbers and no others. At N=42 the first integral gets a 'slowly converging' warning, while at N=56 the second one gets a warning about possible discontinuitues in the function. <br>
+Either way it does affect the correct computation of NxN Vandemonde matrix, as the first integral is involved in calculating the weights w<sub>j</sub> (hence affecting the higher-order terms, which are by definition very small in the smooth Gaussian) and the second one is a direct element of the matrix composition. <br>
+Because analytical weights exist I can simply use these, to avoid the issues with first integral, while in the second one I can use the series approximation to compute an approximate value of the norm. However, wouldn't this be a bit of a lie? <br>
 
+Implementation of the above solution is in the code <b>spectral_tools2.py</b> and the results are in the folder <b>using_vandermonde2/64</b> <br>
 
+Summary is presented below. Again, left column for-loops, right column using Vandermonde matrix. <br>
+ 
+<img src="/filtering/32/Gaussian_filter_coeff_s4_N32.png" alt='' width='400' align='middle'/><img src="/filtering/using_vandermonde2/32/Gaussian_filter_coeff_s4_N32.png" alt='' width='400' align='middle'/>
+<img src="/filtering/64/Gaussian_filter_coeff_s4_N64.png" alt='' width='400' align='middle'/><img src="/filtering/using_vandermonde2/64/Gaussian_filter_coeff_s4_N64.png" alt='' width='400' align='middle'/>
 
