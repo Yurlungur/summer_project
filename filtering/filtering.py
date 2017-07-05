@@ -15,7 +15,7 @@ from numpy.polynomial import chebyshev as T
 from scipy.integrate import quad
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
-from spectral_tools2 import VMatrix, Decompose, FilterCoeff
+from spectral_tools import VMatrix, Decompose, FilterCoeff
 
 #############################################
 
@@ -152,7 +152,7 @@ if __name__ == "__main__":
 
     for N in N_val:
         
-        print('Constructing the Vendermonde matrix for N=%d' %N)
+        print('Constructing the Vandermonde matrix for N=%d' %N)
         w_i, Vmatrix = VMatrix(N)
         print('Matrix successfully constructed for N=%d' %N)
         

@@ -11,7 +11,7 @@ import os, sys
 import time
 import numpy as np
 import scipy as sp
-from math import pi, sqrt, exp, cos, sin
+from numpy import pi, sqrt, exp, cos, sin
 from numpy.polynomial import chebyshev as T
 from scipy.integrate import quad
 import matplotlib.pyplot as plt
