@@ -129,3 +129,30 @@ Summary is presented below. Again, left column for-loops, right column using Van
 <img src="/filtering/32/Gaussian_filter_coeff_s4_N32.png" alt='' width='400' align='middle'/><img src="/filtering/using_vandermonde2/32/Gaussian_filter_coeff_s4_N32.png" alt='' width='400' align='middle'/>
 <img src="/filtering/64/Gaussian_filter_coeff_s4_N64.png" alt='' width='400' align='middle'/><img src="/filtering/using_vandermonde2/64/Gaussian_filter_coeff_s4_N64.png" alt='' width='400' align='middle'/>
 
+
+# Edge detection I
+
+<b>Folder: edge_detection<br>
+Code: edgedetect.py</b>
+
+Method based on A.Gelb and E.Tadmor 'Detection of Edges in Spectral Data', using their suggested discrete concentration factors &tau;<sub>k,N</sub>. Program edgedetect.py uses Cehbyshev spectral decomposition of the Gaussian and Top Hat functions, to directly apply concentration factors into the discrete Fourier partial sum. To do so, change of variables frox x to &theta; is performed with x=arccos(&theta;). It is still work in progress, however the first results can be compared now. <br>
+The program uses both the raw Chebyshev coefficients and ones with applied exponential filtering. The filtering visibly reduces the oscillatory character of [f](x) near the expected edges for the Top Hat. As expected for the Gaussian, no edges are detected, the function is smooth throughout. <br>
+As the number of Chebyshev coefficients is increased, the partial sum is converging on the jump value of the Top Hat function. First results are located in the folder <b>edge_detection/test</b><br>
+The concentration factors used are: <br>
+1. Dirichlet
+2. Fourier
+3. Gibbs
+4. First order polynomial
+5. Second order polynomial <br>
+
+They are presented in the following order below: 1st Row - 1, 2, 3; 2nd Row - 4, 5, Gaussian example. <br>
+
+<b>N=32</b>
+
+<img src="/edge_detection/test/Top_hat_edge_dirichlet_s6_N32.png" alt='' width='275' align='middle'/><img src="/edge_detection/test/Top_hat_edge_fourier_s6_N32.png" alt='' width='275' align='middle'/><img src="/edge_detection/test/Top_hat_edge_gibbs_s6_N32.png" alt='' width='275' align='middle'/>
+<img src="/edge_detection/test/Top_hat_edge_poly1_s6_N32.png" alt='' width='275' align='middle'/><img src="/edge_detection/test/Top_hat_edge_poly2_s6_N32.png" alt='' width='275' align='middle'/><img src="/edge_detection/test/Gaussian_edge_poly2_s6_N32.png" alt='' width='275' align='middle'/>
+
+<b>N=64</b>
+
+<img src="/edge_detection/test/Top_hat_edge_dirichlet_s6_N64.png" alt='' width='275' align='middle'/><img src="/edge_detection/test/Top_hat_edge_fourier_s6_N64.png" alt='' width='275' align='middle'/><img src="/edge_detection/test/Top_hat_edge_gibbs_s6_N64.png" alt='' width='275' align='middle'/>
+<img src="/edge_detection/test/Top_hat_edge_poly1_s6_N64.png" alt='' width='275' align='middle'/><img src="/edge_detection/test/Top_hat_edge_poly2_s6_N64.png" alt='' width='275' align='middle'/><img src="/edge_detection/test/Gaussian_edge_poly2_s6_N64.png" alt='' width='275' align='middle'/>
