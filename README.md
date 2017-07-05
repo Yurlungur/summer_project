@@ -92,8 +92,8 @@ Code: filtering.py and spectral_tools.py</b>
 
 Following Jonah's advice, the spectral decomposition method was vectorised, to avoid long for-loop calculations. These can be replaced with single calculation of the Vandermonde matrix (and its inverse) to allow switching between the collocation points' function values u(x<sub>j</sub>) and expansion coefficients a<sub>i</sub>. <br>
 The Vendermonde matrix is defined as follows: <br>
-<center> M<sub>ij</sub>=&phi;<sub>i</sub>(x<sub>j</sub>)w<sub>j</sub>/(&phi;<sub>i</sub>,&phi;<sub>i</sub>) </center> <br>
+M<sub>ij</sub>=&phi;<sub>i</sub>(x<sub>j</sub>)w<sub>j</sub>/(&phi;<sub>i</sub>,&phi;<sub>i</sub>) <br>
 and acts on the u<sub>j</sub> i.e. u(x<sub>j</sub>) with x<sub>j</sub> being the collocation points, in the following manner: <br>
-<center>M<sub>ij</sub>u<sub>j</sub> = a<sub>i</sub></center>
+M<sub>ij</sub>u<sub>j</sub> = a<sub>i</sub>
 
 
