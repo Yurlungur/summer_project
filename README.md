@@ -117,7 +117,9 @@ However, it seems not to be the case for N=64 spectral decomposition of Gaussian
 <br>
 
 When computing the integrals like &int;T<sub>j</sub>(x)w(x)dx or &int;T<sub>j</sub>(x)<sup>2</sup>w(x)dx quad integration with scipy reaches difficulties at 2 particular numbers and no others. At N=42 the first integral gets a 'slowly converging' warning, while at N=56 the second one gets a warning about possible discontinuitues in the function. <br>
-Either way it does affect the correct computation of NxN Vandemonde matrix, as the first integral is involved in calculating the weights w<sub>j</sub> (hence affecting the higher-order terms, which are by definition very small in the smooth Gaussian) and the second one is a direct element of the matrix composition. <br>
+When I tried to research the topic in literature or the Internet I came across a T42 truncation, apparently common in spectral methods such as the Spherical Harmonics Expansion (SHE). Is the N=42 issue somehow related to this topic and is there a neat workaround, instead of using my patch-up solution discussed below? I couldn't solve this issue yesterday and got stuck. <br><br>
+
+Either way this peculiar quad integration behaviour does affect the correct computation of NxN Vandemonde matrix, as the first integral is involved in calculating the weights w<sub>j</sub> (hence affecting the higher-order terms, which are by definition very small in the smooth Gaussian) and the second one is a direct element of the matrix composition. <br>
 Because analytical weights exist I can simply use these, to avoid the issues with first integral, while in the second one I can use the series approximation to compute an approximate value of the norm. However, wouldn't this be a bit of a lie? <br>
 
 Implementation of the above solution is in the code <b>spectral_tools2.py</b> and the results are in the folder <b>using_vandermonde2/64</b> <br>
