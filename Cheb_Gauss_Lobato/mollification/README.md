@@ -46,6 +46,9 @@ Results of buffer application along with N-dependence are presented below:
 At this stage I was asked to move on, but bothered with this unsatisfactory result I thought of ways to avoid edge smoothing.<br>
 
 # Piecewise mollification
+
+<b>Function: PiecewiseMollify</b>
+
 As a solution I decided to divide my domain into regions between detected discontinuities and perform 'piecewise mollification' with suitably normalised and 'chopped' mollifiers to avoid incorporating parts of the reconstruction beyond a discontinuity. I'm happy to explain my logic in spoken English, but the reasoning is as follows:<br>
 <i>A discontinuity in a function assumes no information exchange between two pieces of function. These are two separate entities, stitched together in an artificial manner using curly brackets. Therefore the only points that contain relevant and true information about a point to the left of a discontinuity are those physically located to the left of it. Ones to the right are separate entity, therefore shall not be included in the convolution process. Otherwise we're forcing two elements to join against the nature of considered function</i><br>
 
@@ -66,3 +69,10 @@ Using this approach results in the following shape of mollified reconstruction f
 
 <b>Failures:</b><br>
 * quite unpleasant artefacts close to the edge, which decrease with increasing number of N. I believe this one is fixable with a bit more post-processing, however I need to put it aside for the moment<br>
+
+I've also checked the behaviour with increasing N and varying the theta parameter. As expected, it turns out that Tadmor's theta choice of 1/4 is a correct one:<br>
+
+
+<img src="piecewise_Nerror.png" align='middle'/><br>
+------------------------------------------------------------------------------------------------
+<img src="piecewise_thetaerror.png" align='middle'/><br>
