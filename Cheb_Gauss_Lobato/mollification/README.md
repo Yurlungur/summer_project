@@ -56,4 +56,13 @@ Illustration of the 'chopped' mollifiers for piecewise procedure is presented be
 Using this approach results in the following shape of mollified reconstruction for N=32 and N=64:
   
 <img src="N32_piecewise.png" align='middle'/><br>
+------------------------------------------------------------------------------------------------
 <img src="N64_piecewise.png" align='middle'/><br>
+
+<b>Successes:</b><br>
+* Previous mollification successes recovered for N=32
+* Top-hat crossing the boundary is unaffected by mollification without the need for a buffer
+* Discontinuous character of the function is recovered, the function is clearly multivalued at x=edge location<br>
+
+<b>Failures:</b><br>
+* quite unpleasant artefacts close to the edge, which decrease with increasing number of N. I believe this one is fixable with a bit more post-processing, however I need to put it aside for the moment<br>
