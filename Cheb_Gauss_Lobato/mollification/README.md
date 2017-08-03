@@ -87,6 +87,6 @@ Finally, to visualise directly the difference between the Gibbs phenomenon prese
 <br>
 --- <br>
 
-So, Jonah, by convergence plots you meant the ones below? :)
+Error convergence plots at x=0.0 (between 2 edges and 'far from edge' for the cases described before) are presented below:
 
 <img src="convergence.png" align='middle'/><br>
