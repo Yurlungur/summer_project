@@ -76,3 +76,10 @@ I've also checked the behaviour with increasing N and varying the theta paramete
 <img src="piecewise_Nerror.png" align='middle'/><br>
 ------------------------------------------------------------------------------------------------
 <img src="piecewise_thetaerror.png" align='middle'/><br>
+
+---
+<br>
+
+Finally, to visualise directly the difference between the Gibbs phenomenon present and applied mollification, I plot the following:<br>
+
+<img src="mollify_vs_spectral.png" align='middle'/><br>
