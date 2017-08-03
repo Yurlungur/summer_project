@@ -85,7 +85,8 @@ Finally, to visualise directly the difference between the Gibbs phenomenon prese
 <img src="mollify_vs_spectral.png" align='middle'/><br>
 
 <br>
----
+--- <br>
+
 So, Jonah, by convergence plots you meant the ones below? :)
 
 <img src="convergence.png" align='middle'/><br>
